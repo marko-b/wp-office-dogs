@@ -5,8 +5,6 @@
 
 ?>
 
-<?php $dog_post_number = get_query_var('dog_post_number'); ?>
-
 <div id="<?php the_ID(); ?>" class="card my-1 mx-1 doggo" style="<?php echo $dog_post_number == 0 ? 'width:100% !important' : 'min-width:350px; max-width:500px;'; ?>;"
   data-allergies="<?php echo (!empty(implode(',', get_post_meta(get_the_id(), 'food_allergies'))) ? 'yes' : 'no'); ?>"
   data-breed="<?php echo (!empty(implode(', ', wp_list_pluck(get_the_terms(get_the_id(), 'mb_dog_breed' ), 'name'))) ? esc_attr(implode(', ', wp_list_pluck(get_the_terms(get_the_id(), 'mb_dog_breed' ), 'name'))) : ''); ?>"
