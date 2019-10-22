@@ -6,7 +6,7 @@
 ?>
 
 <div id="<?php the_ID(); ?>" class="card my-1 mx-1 doggo" style="<?php echo $dog_post_number == 0 ? 'width:100% !important' : 'min-width:350px; max-width:500px;'; ?>;"
-  data-allergies="<?php echo (!empty(implode(',', get_post_meta(get_the_id(), 'food_allergies'))) ? 'yes' : 'no'); ?>"
+  data-allergies="<?php echo (!empty(get_post_meta(get_the_id(), 'food_allergies', true)) ? 'yes' : 'no'); ?>"
   data-breed="<?php echo (!empty(implode(', ', wp_list_pluck(get_the_terms(get_the_id(), 'mb_dog_breed' ), 'name'))) ? esc_attr(implode(', ', wp_list_pluck(get_the_terms(get_the_id(), 'mb_dog_breed' ), 'name'))) : ''); ?>"
   >
 <?php if ($dog_post_number == 0) : ?>
@@ -22,15 +22,15 @@
     <div class="card-body">
       <h4 class="card-title"><?php the_title(); ?></h4>
       <p class="card-text"><i class="fas fa-birthday-cake"></i> <?php echo esc_html(format_birthdate(get_the_id(), 'full_date')); ?></p>
-      <p class="card-text"><i class="fas fa-user"></i></i> <?php echo esc_html(implode(',', get_post_meta(get_the_id(), 'owner_name'))); ?></p>
-      <?php if (!empty(implode(',', get_post_meta(get_the_id(), 'favorite_food')))) : ?>
-        <p class="card-text"><i class="fas fa-bone"></i> <?php echo esc_html(implode(',', get_post_meta(get_the_id(), 'favorite_food'))); ?></p>
+      <p class="card-text"><i class="fas fa-user"></i></i> <?php echo esc_html(get_post_meta(get_the_id(), 'owner_name', true)); ?></p>
+      <?php if (!empty(get_post_meta(get_the_id(), 'favorite_food', true))) : ?>
+        <p class="card-text"><i class="fas fa-bone"></i> <?php echo esc_html(get_post_meta(get_the_id(), 'favorite_food', true)); ?></p>
       <?php endif; ?>
-  		<?php if (!empty(implode(',', get_post_meta(get_the_id(), 'food_allergies')))) : ?>
-  			<p class="card-text"><i class="fas fa-exclamation-triangle"></i> <?php echo esc_html(implode(',', get_post_meta(get_the_id(), 'food_allergies'))); ?></p>
+  		<?php if (!empty(get_post_meta(get_the_id(), 'food_allergies', true))) : ?>
+  			<p class="card-text"><i class="fas fa-exclamation-triangle"></i> <?php echo esc_html(get_post_meta(get_the_id(), 'food_allergies', true)); ?></p>
   		<?php endif; ?>
-      <?php if (!empty(implode(',', get_post_meta(get_the_id(), 'favorite_toy')))) : ?>
-    		<p class="card-text"><i class="fas fa-basketball-ball"></i> <?php echo esc_html(implode(',', get_post_meta(get_the_id(), 'favorite_toy'))); ?></p>
+      <?php if (!empty(get_post_meta(get_the_id(), 'favorite_toy', true))) : ?>
+    		<p class="card-text"><i class="fas fa-basketball-ball"></i> <?php echo esc_html(get_post_meta(get_the_id(), 'favorite_toy', true)); ?></p>
       <?php endif; ?>
       <?php if (!empty(implode(', ', wp_list_pluck(get_the_terms(get_the_id(), 'mb_dog_breed' ), 'name')))) : ?>
         <p class="card-text"><i class="fas fa-dog"></i> <?php echo esc_html(implode(', ', wp_list_pluck(get_the_terms(get_the_id(), 'mb_dog_breed' ), 'name'))); ?></p>

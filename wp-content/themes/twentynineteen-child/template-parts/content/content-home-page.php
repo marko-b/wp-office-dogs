@@ -10,14 +10,14 @@
 	alt="<?php echo (!empty(get_the_post_thumbnail_url(get_the_id(), 'full')) && !empty(get_post_meta(get_post_thumbnail_id(get_the_id()), '_wp_attachment_image_alt', true))) ? esc_attr(get_post_meta(get_post_thumbnail_id(get_the_id()), '_wp_attachment_image_alt', true)) : esc_attr(get_the_title()); ?>">
   <div class="card-body">
     <h4 class="card-title"><?php the_title() ?></h4>
-		<?php if (!empty(implode(',', get_post_meta(get_the_id(), 'favorite_food')))) : ?>
-      <p class="card-text"><i class="fas fa-bone"></i> <?php echo esc_html(implode(',', get_post_meta(get_the_id(), 'favorite_food'))); ?></p>
+		<?php if (!empty(get_post_meta(get_the_id(), 'favorite_food', true))) : ?>
+      <p class="card-text"><i class="fas fa-bone"></i> <?php echo esc_html(get_post_meta(get_the_id(), 'favorite_food', true)); ?></p>
     <?php endif; ?>
-		<?php if (!empty(implode(',', get_post_meta(get_the_id(), 'food_allergies')))) : ?>
-			<p class="card-text"><i class="fas fa-exclamation-triangle"></i> <?php echo esc_html(implode(',', get_post_meta(get_the_id(), 'food_allergies'))); ?></p>
+		<?php if (!empty(get_post_meta(get_the_id(), 'food_allergies', true))) : ?>
+			<p class="card-text"><i class="fas fa-exclamation-triangle"></i> <?php echo esc_html(get_post_meta(get_the_id(), 'food_allergies', true)); ?></p>
 		<?php endif; ?>
-		<?php if (!empty(implode(',', get_post_meta(get_the_id(), 'favorite_toy')))) : ?>
-  		<p class="card-text"><i class="fas fa-basketball-ball"></i> <?php echo esc_html(implode(',', get_post_meta(get_the_id(), 'favorite_toy'))); ?></p>
+		<?php if (!empty(get_post_meta(get_the_id(), 'favorite_toy', true))) : ?>
+  		<p class="card-text"><i class="fas fa-basketball-ball"></i> <?php echo esc_html(get_post_meta(get_the_id(), 'favorite_toy', true)); ?></p>
     <?php endif; ?>
   </div>
 	<?php if (get_edit_post_link()) : ?>
